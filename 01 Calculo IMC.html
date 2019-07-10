@@ -4,9 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>01 - Calculo IMC</title>
 </head>
 <body>
-    
+    Peso(KG): <input id="peso"><br/>
+
+    Altura(M): <input id="altura"><br/>
+
+    <form action="">
+        <input type="radio" name="genero" value="masculino"> Masculino<br>
+        <input type="radio" name="genero" value="feminino"> Feminino<br>
+    </form>
+
+    <button onclick="calcularIMC()">Calcular IMC</button><br/>
+
+    <div id="resultado">
+    </div>
+
 </body>
+    
+<script>
+    function calcularIMC(){
+
+        document.querySelector("div#resultado").innerHTML = ""
+
+        var generoMasculino = document.getElementsByName("genero")[0].checked
+
+        var generoFeminino = document.getElementsByName("genero")[1].checked
+
+        var peso = document.getElementById("peso").value
+        var altura = document.getElementById("altura").value
+
+        pesoFloat = parseFloat(peso)
+        alturaFloat = parseFloat(altura)
+
+        imc = (pesoFloat / alturaFloat**2).toFixed(2)
+
+        if (!isNaN(imc) && (generoMasculino || generoFeminino)){
+            document.querySelector("div#resultado").innerHTML = `IMC = ${imc}` 
+            if (generoMasculino){
+                if (imc < 19.1){
+                    document.querySelector("div#resultado").innerHTML += ", você está abaixo do peso"
+                }else if (imc < 25.8){
+                    document.querySelector("div#resultado").innerHTML += ", seu peso está normal"
+                }else if (imc < 27.3){
+                    document.querySelector("div#resultado").innerHTML += ", você está marginalmente acima do peso"
+                }else if (imc < 32.3){
+                    document.querySelector("div#resultado").innerHTML += ", você está acima do peso ideal"
+                }else {
+                    document.querySelector("div#resultado").innerHTML += ", você está obeso"
+                }
+
+            }else if (generoFeminino){
+                 if (imc < 20.7){
+                    document.querySelector("div#resultado").innerHTML += ", você está abaixo do peso"
+                }else if (imc < 26.4){
+                    document.querySelector("div#resultado").innerHTML += ", seu peso está normal"
+                }else if (imc < 27.8){
+                    document.querySelector("div#resultado").innerHTML += ", você está marginalmente acima do peso"
+                }else if (imc < 31.1){
+                    document.querySelector("div#resultado").innerHTML += ", você está acima do peso ideal"
+                }else {
+                    document.querySelector("div#resultado").innerHTML += ", você está obeso"
+                }
+            }
+
+        }else{
+            document.querySelector("div#resultado").innerHTML = "Erro ao calcular o IMC, verifique os campos informados e tente novamente"
+        }
+
+    }
+</script>
+
 </html>
