@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02 Conversao Numeros</title>
+</head>
+<body>
 
+    Valor Decimal: <input id="dec"/>
+    <button id="Conversao" onclick="converter()">Converter</button>
+    <p id="bin"/>
+    <p id="oct"/>
+    <p id="hex"/>
+</body>
+
+<script>
+    function converter(){
+
+        dec = document.getElementById("dec").value
+        decFloat = parseFloat(dec)
+
+        bin = decFloat.toString(2)
+        oct = decFloat.toString(8)
+        hex = decFloat.toString(16)
+
+
+        document.getElementById("bin").innerHTML = `Valor Bin: ${bin}`
+        document.getElementById("oct").innerHTML = `Valor Oct: ${oct}`
+        document.getElementById("hex").innerHTML = `Valor Hex: ${hex.toUpperCase()}`
+    }
+</script>
+</html>
