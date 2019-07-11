@@ -10,25 +10,36 @@
 
     Valor Decimal: <input id="dec"/>
     <button id="Conversao" onclick="converter()">Converter</button>
-    <p id="bin"/>
-    <p id="oct"/>
-    <p id="hex"/>
+    <p id="bin">
+    <p id="oct">
+    <p id="hex">
 </body>
 
 <script>
     function converter(){
 
+        document.getElementById("bin").innerHTML = ''
+        document.getElementById("oct").innerHTML = ''
+        document.getElementById("hex").innerHTML = ''
+
         dec = document.getElementById("dec").value
+
+        dec = dec.replace(',', '.')
+
         decFloat = parseFloat(dec)
 
         bin = decFloat.toString(2)
         oct = decFloat.toString(8)
         hex = decFloat.toString(16)
 
-
-        document.getElementById("bin").innerHTML = `Valor Bin: ${bin}`
-        document.getElementById("oct").innerHTML = `Valor Oct: ${oct}`
-        document.getElementById("hex").innerHTML = `Valor Hex: ${hex.toUpperCase()}`
+        if (!isNaN(bin) || !isNaN(oct) || !isNaN(hex)){
+            document.getElementById("bin").innerHTML = `Valor Bin: ${bin}`
+            document.getElementById("oct").innerHTML = `Valor Oct: ${oct}`
+            document.getElementById("hex").innerHTML = `Valor Hex: ${hex.toUpperCase()}`
+        }else {
+            document.getElementById("bin").innerHTML = 'Ops! Ocorreu um erro durante a conversão, tente novamente digitando somente números'
+        }
+        
     }
 </script>
 </html>
