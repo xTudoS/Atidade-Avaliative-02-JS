@@ -1,1 +1,1 @@
-# Atidade-Avaliative-02-JS
+# Atividade-Avaliativa-02-JS
