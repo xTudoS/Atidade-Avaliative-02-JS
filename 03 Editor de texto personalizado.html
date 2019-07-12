@@ -7,21 +7,38 @@
     <title>03 - Editor de texto personalizado.</title>
 </head>
 <body>
-    <textarea type="text" id="texto"></textarea><br/>
+    <textarea id="texto"></textarea><br/>
     <button onclick="minusculas()">Converter para minúsculas</button><br/>
-    <button>Converter para MAIÚSCULAS</button><br/>
-    <button>Contagem de caracteres</button><br/>
-    <button>Contagem de linhas</button><br/>
+    <button onclick="maiusculas()">Converter para MAIÚSCULAS</button><br/>
+    <button onclick="contar_carcteres()">Contagem de caracteres</button><br/>
+    <button onclick="contar_linhas()">Contagem de linhas</button><br/>
 </body>
 
 <script>
     
     function minusculas(){
-        var texto = document.getElementById("texto").innerHTML
-        console.log(texto.value)
-        console.log('cu')
+        var texto = document.getElementById("texto").value
+        document.getElementById("texto").value = texto.toLowerCase()
+    }
+
+    function maiusculas(){
+        var texto = document.getElementById("texto").value
+        document.getElementById("texto").value = texto.toUpperCase()
+    }
+
+    function contar_carcteres(){
+        var texto = document.getElementById("texto").value
+        document.getElementById("texto").value = texto.length
+    }
+
+    function contar_linhas(){
+        var texto = document.getElementById("texto").value
+        texto = texto.split("\n")
+
+        var total_linhas = texto.length
+
+        document.getElementById("texto").value = total_linhas
     }
 
 </script>
-
 </html>
